@@ -1,0 +1,30 @@
+E6 · Remediación de Lodash con Dependabot
+
+Alerta #1 · Command Injection in lodash
+CVE-2021-23337 · GHSA-35jh-r3h4-6jhm
+Severidad alta · CVSS 3.1 de 7.2
+Versión afectada en el proyecto 4.17.15
+Primera versión parcheada de esta alerta 4.17.21
+Versión instalada tras la fusión 4.18.1
+
+El PR #1 actualizó Lodash en package.json y package-lock.json.
+Las notas de 4.18.1 describen una corrección de ReferenceError en las compilaciones modulares.
+El PR se fusionó en main en el commit 791cb21b62a186b4898f68e890421e40af29750d.
+
+Verificación posterior en el Codespace
+- git pull --ff-only origin main actualizó el entorno al commit de fusión.
+- npm ci instaló desde package-lock.json y npm ls lodash mostró lodash@4.18.1.
+- npm audit --audit-level=high devolvió 0 y reportó 0 vulnerabilidades.
+- Tras reiniciar solo la API, la versión 2 de Vault siguió vigente.
+- Con la clave vigente la API devolvió HTTP 200 y {"ok":true,"lodash":"4.18.1"}.
+- Sin clave la API devolvió HTTP 401.
+
+Alerta del repositorio
+https://github.com/janotheboss75/uc3-api-secretos/security/dependabot/1
+Aviso público
+https://github.com/advisories/GHSA-35jh-r3h4-6jhm
+Pull request y cambios
+https://github.com/janotheboss75/uc3-api-secretos/pull/1/changes
+Notas de Lodash
+https://github.com/lodash/lodash/releases/tag/4.18.1
+
